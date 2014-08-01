@@ -1,6 +1,6 @@
 # Angular Validators
 
-[![Code Climate](https://codeclimate.com/github/intellix/angular-validators.png)](https://codeclimate.com/github/Foxandxss/angular-toastr)
+[![Code Climate](https://codeclimate.com/github/intellix/angular-validators.png)](https://codeclimate.com/github/intellix/angular-validators)
 
 Re-useable validators to use across my projects
 
