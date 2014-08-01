@@ -14,9 +14,9 @@ Everything
 
 ## Installation
 
-bower install angular-validators
+`bower install angular-validators`
 
-Then add `toastr` to your modules dependencies:
+Then add `angularValidators` to your modules dependencies:
 
 ```javascript
 angular.module('app', ['angular-validators'])
