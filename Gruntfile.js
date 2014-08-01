@@ -3,6 +3,18 @@ module.exports = function(grunt) {
 
     clean: ['dist'],
 
+    copy: {
+      prod: {
+        expand: true,
+        cwd: 'src',
+        dest: 'dist',
+        src: [
+          '*.js',
+          '!*.spec.js'
+        ]
+      }
+    },
+
     jshint: {
       files: ['Gruntfile.js','src/**/*.js', 'test/validator_spec.js'],
       options: {
@@ -20,8 +32,10 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('build', ['jshint', 'copy:prod']);
 };

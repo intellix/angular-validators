@@ -7,8 +7,7 @@
     "Dominic Watson <domwatson@live.co.uk>"
   ],
   "main": [
-    "./src/*.js",
-    "!./src/*.spec.js"
+    "./dist/*.js",
   ],
   "ignore": [
     "config",
