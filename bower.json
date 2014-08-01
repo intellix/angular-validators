@@ -1,13 +1,13 @@
 {
   "name": "angular-validators",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Additional validators for AngularJS",
   "homepage": "https://github.com/intellix/angular-validators",
   "authors": [
     "Dominic Watson <domwatson@live.co.uk>"
   ],
   "main": [
-    "./dist/*.js",
+    "./dist/*.js"
   ],
   "ignore": [
     "config",
