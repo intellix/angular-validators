@@ -1,27 +1,41 @@
 {
-    "name": "angular-validators",
-    "version": "0.1.0",
-    "main": [
-        "./src/*.js"
-        "!./src/*.js"
-    ],
-    "ignore": [
-        "config",
-        "node_modules",
-        "src",
-        "test",
-        ".travis.yml",
-        ".gitignore",
-        ".jshintrc",
-        "CHANGELOG.md",
-        "Gruntfile.js",
-        "package.json"
-    ],
-    "dependencies": {
-        "angular": "1.3.x"
-    },
-    "devDependencies": {
-        "angular-mocks": "1.3.x",
-        "jquery": "latest"
-    }
+  "name": "angular-validators",
+  "version": "0.1.0",
+  "description": "Additional validators for AngularJS",
+  "homepage": "https://github.com/intellix/angular-validators",
+  "authors": [
+    "Dominic Watson <domwatson@live.co.uk>"
+  ],
+  "main": [
+    "./src/*.js",
+    "!./src/*.js"
+  ],
+  "ignore": [
+    "config",
+    "node_modules",
+    "src",
+    "test",
+    ".travis.yml",
+    ".gitignore",
+    ".jshintrc",
+    "CHANGELOG.md",
+    "Gruntfile.js",
+    "package.json",
+    "**/.*",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.3.x",
+    "jquery": "latest"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "validators"
+  ],
+  "license": "MIT"
 }
