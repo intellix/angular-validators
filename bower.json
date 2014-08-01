@@ -8,7 +8,7 @@
   ],
   "main": [
     "./src/*.js",
-    "!./src/*.js"
+    "!./src/*.spec.js"
   ],
   "ignore": [
     "config",
