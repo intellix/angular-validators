@@ -1,0 +1,218 @@
+<html>
+<head>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../src/angular-validators.module.js"></script>
+    <script src="../src/equality.js"></script>
+    <script src="../src/min-age.js"></script>
+    <script src="../src/ng-min-max.js"></script>
+    <script src="../src/cards-cvc.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <script>
+        angular.module('app', [
+            'angularValidators'
+        ]).controller('MainCtrl', function($scope) {
+            $scope.equalsVal1     = 'donkey';
+            $scope.equalsVal2     = 'fish';
+
+            $scope.notEqualsVal1  = 'sheep';
+            $scope.notEqualsVal2  = 'cow';
+
+            $scope.minAge         = 18;
+            $scope.dateOfBirth    = new Date('2000-01-01');
+
+            $scope.minVal1        = 100;
+            $scope.minVal2        = 99;
+
+            $scope.maxVal1        = 100;
+            $scope.maxVal2        = 99;
+
+            $scope.cardVal1       = '4111111111111111';
+            $scope.cvcVal1        = '987';
+        });
+    </script>
+    <style>
+        h2 { padding-bottom: 20px; border-bottom: 1px solid #e7e7e7; margin-bottom: 20px; }
+    </style>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+    
+    <div class="container">
+        <h1>Angular Validators</h1>
+        <p>A set of commonly used validators not in core.</p>
+        <br>
+
+        <form class="form-horizontal" name="validatorForm">
+            <h2>Equality</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="panel panel-default" ng-class="{'panel-success': validatorForm.equals2.$valid, 'panel-danger': validatorForm.equals2.$invalid}">
+                        <div class="panel-heading"><h3 class="panel-title">Equals</h3></div>
+                        <div class="panel-body">
+                            <p>For making sure something is equal</p>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Val1 (text)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="text" name="equals1" ng-model="equalsVal1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Val2 (text)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="text" name="equals2" ng-model="equalsVal2" equals="{{equalsVal1}}">
+                                </div>
+                            </div>
+                            <pre>{{validatorForm.equals2 | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default" ng-class="{'panel-success': validatorForm.notEquals2.$valid, 'panel-danger': validatorForm.notEquals2.$invalid}">
+                        <div class="panel-heading"><h3 class="panel-title">Not Equals</h3></div>
+                        <div class="panel-body">
+                            <p>For making sure something isn't equal</p>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Val1 (text)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="text" name="notEquals1" ng-model="notEqualsVal1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Val2 (text)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="text" name="notEquals2" ng-model="notEqualsVal2" not-equals="{{notEqualsVal1}}">
+                                </div>
+                            </div>
+                            <pre>{{validatorForm.notEquals2 | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Min/Max</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="panel panel-default" ng-class="{'panel-success': validatorForm.min2.$valid, 'panel-danger': validatorForm.min2.$invalid}">
+                        <div class="panel-heading"><h3 class="panel-title">Min</h3></div>
+                        <div class="panel-body">
+                            <p>For checking a number is greater than a value</p>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Minimum (number)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="number" name="min1" ng-model="minVal1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Val1 (number)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="number" name="min2" ng-model="minVal2" ng-min="{{minVal1}}">
+                                </div>
+                            </div>
+                            <pre>{{validatorForm.min2 | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default" ng-class="{'panel-success': validatorForm.max2.$valid, 'panel-danger': validatorForm.max2.$invalid}">
+                        <div class="panel-heading"><h3 class="panel-title">Max</h3></div>
+                        <div class="panel-body">
+                            <p>For checking a number is less than a value</p>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Maximum (number)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="number" name="max1" ng-model="maxVal1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Val1 (number)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="number" name="max2" ng-model="maxVal2" ng-max="{{maxVal1}}">
+                                </div>
+                            </div>
+                            <pre>{{validatorForm.max2 | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Cards/CVC</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="panel panel-default" ng-class="{'panel-success': validatorForm.card.$valid, 'panel-danger': validatorForm.card.$invalid}">
+                        <div class="panel-heading"><h3 class="panel-title">Card</h3></div>
+                        <div class="panel-body">
+                            <p>For checking a value is a valid card number.</p>
+                            <p><b>Prepopulate with:</b></p>
+                            <ul class="nav nav-pills">
+                                <li><a ng-click="cardVal1 = 67631346617985661">maestro</a></li>
+                                <li><a ng-click="cardVal1 = 30273173911790">dinersclub</a></li>
+                                <li><a ng-click="cardVal1 = 6304154850775094">laser</a></li>
+                                <li><a ng-click="cardVal1 = 3088250961224813">jcb</a></li>
+                                <li><a ng-click="cardVal1 = 5602237702703827">unionpay</a></li>
+                                <li><a ng-click="cardVal1 = 6011511091420489">discover</a></li>
+                                <li><a ng-click="cardVal1 = 5379852649756588">mastercard</a></li>
+                                <li><a ng-click="cardVal1 = 374131664560548">amex</a></li>
+                                <li><a ng-click="cardVal1 = 4111111111111111">visa</a></li>
+                            </ul>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Card (text)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="text" name="card" ng-model="cardVal1" validate-card>
+                                </div>
+                            </div>
+                            <pre>{{validatorForm.card | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default" ng-class="{'panel-success': validatorForm.cvc.$valid, 'panel-danger': validatorForm.cvc.$invalid}">
+                        <div class="panel-heading"><h3 class="panel-title">CVC (based on number on the left)</h3></div>
+                        <div class="panel-body">
+                            <p>For checking a value is a valid cvc number based on a card type/number</p>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">CVC (text)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="text" name="cvc" ng-model="cvcVal1" validate-cvc card-number="{{cardVal1}}">
+                                </div>
+                            </div>
+                            <pre>{{validatorForm.cvc | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Misc</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="panel panel-default" ng-class="{'panel-success': validatorForm.dateOfBirth.$valid, 'panel-danger': validatorForm.dateOfBirth.$invalid}">
+                        <div class="panel-heading"><h3 class="panel-title">Min Age</h3></div>
+                        <div class="panel-body">
+                            <p>For making sure a person is of a minimum age</p>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Min Age (number)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="number" name="minAge" ng-model="minAge">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Date of Birth (date)</label>
+                                <div class="col-xs-8">
+                                    <input class="form-control" type="date" name="dateOfBirth" ng-model="dateOfBirth" min-age="{{minAge}}">
+                                </div>
+                            </div>
+                            <pre>{{validatorForm.dateOfBirth | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
