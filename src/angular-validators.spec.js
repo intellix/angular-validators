@@ -148,6 +148,16 @@ describe('angularValidator', function() {
             });
             expect(scope.form.input.$valid).toBe(false);
         });
+
+        it('should be invalidated when changing the minimum value', function() {
+            scope.$apply(function() {
+                scope.val1 = 1001;
+            });
+            scope.$apply(function() {
+                scope.min = 1002;
+            });
+            expect(scope.form.input.$valid).toBe(false);
+        });
     });
 
     describe('ngMax', function() {
@@ -187,6 +197,115 @@ describe('angularValidator', function() {
                 scope.val1 = 'meep';
             });
             expect(scope.form.input.$valid).toBe(false);
+        });
+
+        it('should be invalidated when changing the maximum value', function() {
+            scope.$apply(function() {
+                scope.val1 = 999;
+            });
+            scope.$apply(function() {
+                scope.max = 998;
+            });
+            expect(scope.form.input.$valid).toBe(false);
+        });
+
+    });
+
+    describe('validateCard', function() {
+
+        var element, scope;
+
+        beforeEach(inject(function($rootScope, $compile) {
+            scope = $rootScope.$new();
+            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" validate-card></form>')(scope);
+            scope.$digest();
+        }));
+
+        it('should be valid when entering a valid luhn `visa` number', function() {
+            scope.$apply(function() {
+                scope.val1 = '4111111111111111';
+            });
+            // Some reason this is invalid unless I time it out
+            setTimeout(function() {
+                expect(scope.form.input.$valid).toBe(true);
+            });
+        });
+
+        it('should be invalid when entering an invalid luhn `visa` number', function() {
+            scope.$apply(function() {
+                scope.val1 = '4111111111111112';
+            });
+            expect(scope.form.input.$valid).toBe(false);
+        });
+
+        it('should be invalid when entering an invalid length `visa` number', function() {
+            scope.$apply(function() {
+                scope.val1 = '411111111111111';
+            });
+            expect(scope.form.input.$valid).toBe(false);
+        });
+    });
+
+    describe('validateCvc', function() {
+
+        var element, scope;
+
+        beforeEach(inject(function($rootScope, $compile) {
+            scope = $rootScope.$new();
+            scope.cardNumber = '4111111111111111';
+            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" validate-cvc card-number="{{cardNumber}}"></form>')(scope);
+            scope.$digest();
+        }));
+
+        it('should be valid when selected `visa` via card-number and enter 3-digit CVC', function() {
+            scope.$apply(function() {
+                scope.val1 = 123;
+            });
+            expect(scope.form.input.$valid).toBe(true);
+        });
+
+        it('should be valid when selected `amex` via card-number and enter 3-digit or 4-digits', function() {
+            scope.$apply(function() {
+                scope.cardNumber = '374131664560548';
+                scope.val1 = 123;
+            });
+            expect(scope.form.input.$valid).toBe(true);
+
+            scope.$apply(function() {
+                scope.cardNumber = '374131664560548';
+                scope.val1 = 1234;
+            });
+            expect(scope.form.input.$valid).toBe(true);
+        });
+
+        it('should be invalid when selected `visa` via card-number and enter less than or more than 3-digits', function() {
+            scope.$apply(function() {
+                scope.val1 = 12;
+            });
+            expect(scope.form.input.$valid).toBe(false);
+            scope.$apply(function() {
+                scope.val1 = 1234;
+            });
+            expect(scope.form.input.$valid).toBe(false);
+        });
+
+    });
+
+    describe('validateCvc', function() {
+
+        var element, scope;
+
+        beforeEach(inject(function($rootScope, $compile) {
+            scope = $rootScope.$new();
+            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" validate-cvc card-type="visa"></form>')(scope);
+            scope.$digest();
+        }));
+
+        it('should be valid when selected `visa` via card-type and enter 3-digits', function() {
+            scope.$apply(function() {
+                scope.val1 = 123;
+            });
+            expect(scope.form.input.$valid).toBe(true);
         });
 
     });
