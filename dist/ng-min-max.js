@@ -17,6 +17,10 @@
                         return;
                     }
 
+                    attrs.$observe('ngMin', function() {
+                        ngModel.$validate();
+                    });
+
                     ngModel.$validators.ngMin = function(value)
                     {
                         var min = scope.$eval(attrs.ngMin) || 0;
@@ -39,6 +43,10 @@
                     if (!ngModel) {
                         return;
                     }
+
+                    attrs.$observe('ngMax', function() {
+                        ngModel.$validate();
+                    });
 
                     ngModel.$validators.ngMax = function(value)
                     {
