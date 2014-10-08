@@ -2,14 +2,14 @@ describe('angularValidator', function() {
 
     beforeEach(module('angularValidators'));
 
-    describe('equals', function() {
+    describe('ivEquals', function() {
 
         var element, scope;
 
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
             scope.val1 = 'meep';
-            element = $compile('<form name="form"><input type="text" name="input" ng-model="val1" equals="{{val2}}"></form>')(scope);
+            element = $compile('<form name="form"><input type="text" name="input" ng-model="val1" iv-equals="{{val2}}"></form>')(scope);
             scope.$digest();
         }));
 
@@ -29,14 +29,14 @@ describe('angularValidator', function() {
 
     });
 
-    describe('notEquals', function() {
+    describe('ivnotEquals', function() {
 
         var element, scope;
 
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
             scope.val1 = 'meep';
-            element = $compile('<form name="form"><input type="text" name="input" ng-model="val1" not-equals="{{val2}}"></form>')(scope);
+            element = $compile('<form name="form"><input type="text" name="input" ng-model="val1" iv-not-equals="{{val2}}"></form>')(scope);
             scope.$digest();
         }));
 
@@ -56,7 +56,7 @@ describe('angularValidator', function() {
 
     });
 
-    describe('minAge', function() {
+    describe('ivminAge', function() {
 
         var element, scope, currentDate;
 
@@ -64,7 +64,7 @@ describe('angularValidator', function() {
             currentDate = new Date();
             scope = $rootScope.$new();
             scope.minAge = 18;
-            element = $compile('<form name="form"><input type="date" name="input" ng-model="date" min-age="{{minAge}}"></form>')(scope);
+            element = $compile('<form name="form"><input type="date" name="input" ng-model="date" iv-min-age="{{minAge}}"></form>')(scope);
             scope.$digest();
         }));
 
@@ -110,14 +110,14 @@ describe('angularValidator', function() {
 
     });
 
-    describe('ngMin', function() {
+    describe('ivMin', function() {
 
         var element, scope;
 
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
             scope.min = 1000;
-            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" ng-min="{{min}}"></form>')(scope);
+            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" iv-min="{{min}}"></form>')(scope);
             scope.$digest();
         }));
 
@@ -160,14 +160,14 @@ describe('angularValidator', function() {
         });
     });
 
-    describe('ngMax', function() {
+    describe('ivMax', function() {
 
         var element, scope;
 
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
             scope.max = 1000;
-            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" ng-max="{{max}}"></form>')(scope);
+            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" iv-max="{{max}}"></form>')(scope);
             scope.$digest();
         }));
 
@@ -211,13 +211,13 @@ describe('angularValidator', function() {
 
     });
 
-    describe('validateCard', function() {
+    describe('ivCard', function() {
 
         var element, scope;
 
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
-            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" validate-card></form>')(scope);
+            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" iv-card></form>')(scope);
             scope.$digest();
         }));
 
@@ -246,14 +246,14 @@ describe('angularValidator', function() {
         });
     });
 
-    describe('validateCvc', function() {
+    describe('ivCvc', function() {
 
         var element, scope;
 
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
             scope.cardNumber = '4111111111111111';
-            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" validate-cvc card-number="{{cardNumber}}"></form>')(scope);
+            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" iv-cvc card-number="{{cardNumber}}"></form>')(scope);
             scope.$digest();
         }));
 
@@ -291,13 +291,13 @@ describe('angularValidator', function() {
 
     });
 
-    describe('validateCvc', function() {
+    describe('ivCvc', function() {
 
         var element, scope;
 
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
-            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" validate-cvc card-type="visa"></form>')(scope);
+            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" iv-cvc card-type="visa"></form>')(scope);
             scope.$digest();
         }));
 
