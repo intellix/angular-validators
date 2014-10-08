@@ -13,7 +13,7 @@
                         return;
                     }
 
-                    attrs.$observe('iv-equals', function() {
+                    attrs.$observe('ivEquals', function() {
                         ngModel.$validate();
                     });
 
@@ -35,7 +35,7 @@
                         return;
                     }
 
-                    attrs.$observe('iv-not-equals', function() {
+                    attrs.$observe('ivNotEquals', function() {
                         ngModel.$validate();
                     });
 
