@@ -106,7 +106,7 @@
             };
         })
 
-        .directive('validateCard', function(Cards) {
+        .directive('ivCard', function(Cards) {
             return {
                 restrict: 'A',
                 require: 'ngModel',
@@ -149,7 +149,7 @@
             };
         })
 
-        .directive('validateCvc', function(Cards) {
+        .directive('ivCvc', function(Cards) {
             return {
                 restrict: 'A',
                 require: 'ngModel',
