@@ -4,7 +4,7 @@
     <script src="../src/angular-validators.module.js"></script>
     <script src="../src/equality.js"></script>
     <script src="../src/min-age.js"></script>
-    <script src="../src/ng-min-max.js"></script>
+    <script src="../src/min-max.js"></script>
     <script src="../src/cards-cvc.js"></script>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <script>
@@ -59,7 +59,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-4">Val2 (text)</label>
                                 <div class="col-xs-8">
-                                    <input class="form-control" type="text" name="equals2" ng-model="equalsVal2" equals="{{equalsVal1}}">
+                                    <input class="form-control" type="text" name="equals2" ng-model="equalsVal2" iv-equals="{{equalsVal1}}">
                                 </div>
                             </div>
                             <pre>{{validatorForm.equals2 | json}}</pre>
@@ -81,7 +81,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-4">Val2 (text)</label>
                                 <div class="col-xs-8">
-                                    <input class="form-control" type="text" name="notEquals2" ng-model="notEqualsVal2" not-equals="{{notEqualsVal1}}">
+                                    <input class="form-control" type="text" name="notEquals2" ng-model="notEqualsVal2" iv-not-equals="{{notEqualsVal1}}">
                                 </div>
                             </div>
                             <pre>{{validatorForm.notEquals2 | json}}</pre>
@@ -107,7 +107,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-4">Val1 (number)</label>
                                 <div class="col-xs-8">
-                                    <input class="form-control" type="number" name="min2" ng-model="minVal2" ng-min="{{minVal1}}">
+                                    <input class="form-control" type="number" name="min2" ng-model="minVal2" iv-min="{{minVal1}}">
                                 </div>
                             </div>
                             <pre>{{validatorForm.min2 | json}}</pre>
@@ -129,7 +129,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-4">Val1 (number)</label>
                                 <div class="col-xs-8">
-                                    <input class="form-control" type="number" name="max2" ng-model="maxVal2" ng-max="{{maxVal1}}">
+                                    <input class="form-control" type="number" name="max2" ng-model="maxVal2" iv-max="{{maxVal1}}">
                                 </div>
                             </div>
                             <pre>{{validatorForm.max2 | json}}</pre>
@@ -161,7 +161,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-4">Card (text)</label>
                                 <div class="col-xs-8">
-                                    <input class="form-control" type="text" name="card" ng-model="cardVal1" validate-card>
+                                    <input class="form-control" type="text" name="card" ng-model="cardVal1" iv-card>
                                 </div>
                             </div>
                             <pre>{{validatorForm.card | json}}</pre>
@@ -177,7 +177,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-4">CVC (text)</label>
                                 <div class="col-xs-8">
-                                    <input class="form-control" type="text" name="cvc" ng-model="cvcVal1" validate-cvc card-number="{{cardVal1}}">
+                                    <input class="form-control" type="text" name="cvc" ng-model="cvcVal1" iv-cvc card-number="{{cardVal1}}">
                                 </div>
                             </div>
                             <pre>{{validatorForm.cvc | json}}</pre>
@@ -203,7 +203,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-4">Date of Birth (date)</label>
                                 <div class="col-xs-8">
-                                    <input class="form-control" type="date" name="dateOfBirth" ng-model="dateOfBirth" min-age="{{minAge}}">
+                                    <input class="form-control" type="date" name="dateOfBirth" ng-model="dateOfBirth" iv-min-age="{{minAge}}">
                                 </div>
                             </div>
                             <pre>{{validatorForm.dateOfBirth | json}}</pre>
