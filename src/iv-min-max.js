@@ -7,7 +7,7 @@
 
     angular.module('angularValidators')
 
-        .directive('ngMin', function() {
+        .directive('ivMin', function() {
             return {
                 restrict: 'A',
                 require: 'ngModel',
@@ -17,13 +17,13 @@
                         return;
                     }
 
-                    attrs.$observe('ngMin', function() {
+                    attrs.$observe('iv-min', function() {
                         ngModel.$validate();
                     });
 
-                    ngModel.$validators.ngMin = function(value)
+                    ngModel.$validators.ivMin = function(value)
                     {
-                        var min = scope.$eval(attrs.ngMin) || 0;
+                        var min = scope.$eval(attrs.ivMin) || 0;
                         if (!isEmpty(value) && value < min) {
                             return false;
                         } else {
@@ -34,7 +34,7 @@
             };
         })
 
-        .directive('ngMax', function() {
+        .directive('ivMax', function() {
             return {
                 restrict: 'A',
                 require: 'ngModel',
@@ -44,13 +44,13 @@
                         return;
                     }
 
-                    attrs.$observe('ngMax', function() {
+                    attrs.$observe('iv-max', function() {
                         ngModel.$validate();
                     });
 
-                    ngModel.$validators.ngMax = function(value)
+                    ngModel.$validators.ivMax = function(value)
                     {
-                        var max = scope.$eval(attrs.ngMax) || Infinity;
+                        var max = scope.$eval(attrs.ivMax) || Infinity;
                         if (!isEmpty(value) && value > max) {
                             return false;
                         } else {
