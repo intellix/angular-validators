@@ -43,7 +43,7 @@
                     return getAge(date) >= scope.$eval(attrs.minAge);
                 };
 
-                attrs.$observe('iv-min-age', function () {
+                attrs.$observe('ivMinAge', function () {
                     ngModel.$validate();
                 });
             }
