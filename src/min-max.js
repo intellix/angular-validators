@@ -17,7 +17,7 @@
                         return;
                     }
 
-                    attrs.$observe('iv-min', function() {
+                    attrs.$observe('ivMin', function() {
                         ngModel.$validate();
                     });
 
@@ -44,7 +44,7 @@
                         return;
                     }
 
-                    attrs.$observe('iv-max', function() {
+                    attrs.$observe('ivMax', function() {
                         ngModel.$validate();
                     });
 
