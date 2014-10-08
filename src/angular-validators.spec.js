@@ -29,7 +29,7 @@ describe('angularValidator', function() {
 
     });
 
-    describe('ivnotEquals', function() {
+    describe('ivNotEquals', function() {
 
         var element, scope;
 
@@ -56,7 +56,7 @@ describe('angularValidator', function() {
 
     });
 
-    describe('ivminAge', function() {
+    describe('ivMinAge', function() {
 
         var element, scope, currentDate;
 
