@@ -3,7 +3,7 @@
 
     angular.module('angularValidators')
 
-        .directive('equals', function() {
+        .directive('ivEquals', function() {
             return {
                 restrict: 'A',
                 require: 'ngModel',
@@ -13,7 +13,7 @@
                         return;
                     }
 
-                    attrs.$observe('equals', function() {
+                    attrs.$observe('iv-equals', function() {
                         ngModel.$validate();
                     });
 
@@ -25,7 +25,7 @@
             };
         })
 
-        .directive('notEquals', function() {
+        .directive('ivNotEquals', function() {
             return {
                 restrict: 'A',
                 require: 'ngModel',
@@ -35,7 +35,7 @@
                         return;
                     }
 
-                    attrs.$observe('notEquals', function() {
+                    attrs.$observe('iv-not-equals', function() {
                         ngModel.$validate();
                     });
 
