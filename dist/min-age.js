@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('angularValidators').directive('minAge', function() {
+    angular.module('angularValidators').directive('ivMinAge', function() {
         return {
             restrict: 'A',
             require: 'ngModel',
@@ -40,10 +40,10 @@
                         return;
                     }
                     var date = new Date(value);
-                    return getAge(date) >= scope.$eval(attrs.minAge);
+                    return getAge(date) >= scope.$eval(attrs.ivMinAge);
                 };
 
-                attrs.$observe('minAge', function () {
+                attrs.$observe('ivMinAge', function () {
                     ngModel.$validate();
                 });
             }
