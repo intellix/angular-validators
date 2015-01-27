@@ -40,7 +40,7 @@
                         return;
                     }
                     var date = new Date(value);
-                    return getAge(date) >= scope.$eval(attrs.minAge);
+                    return getAge(date) >= scope.$eval(attrs.ivMinAge);
                 };
 
                 attrs.$observe('ivMinAge', function () {

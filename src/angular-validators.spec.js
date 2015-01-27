@@ -1,4 +1,4 @@
-describe('angularValidator', function() {
+describe('angularValidators', function() {
 
     beforeEach(module('angularValidators'));
 
@@ -101,13 +101,6 @@ describe('angularValidator', function() {
             expect(scope.form.input.$valid).toBe(false);
         });
 
-        it('should be invalid when a string is specified', function() {
-            scope.$apply(function() {
-                scope.date = 'meep';
-            });
-            expect(scope.form.input.$valid).toBe(false);
-        });
-
     });
 
     describe('ivMin', function() {
@@ -138,13 +131,6 @@ describe('angularValidator', function() {
         it('should be invalid when min is 1000 and ng-model is less than that', function() {
             scope.$apply(function() {
                 scope.val1 = 999;
-            });
-            expect(scope.form.input.$valid).toBe(false);
-        });
-
-        it('should be invalid when specifying a string', function() {
-            scope.$apply(function() {
-                scope.val1 = 'meep';
             });
             expect(scope.form.input.$valid).toBe(false);
         });
@@ -192,13 +178,6 @@ describe('angularValidator', function() {
             expect(scope.form.input.$valid).toBe(false);
         });
 
-        it('should be invalid when specifying a string', function() {
-            scope.$apply(function() {
-                scope.val1 = 'meep';
-            });
-            expect(scope.form.input.$valid).toBe(false);
-        });
-
         it('should be invalidated when changing the maximum value', function() {
             scope.$apply(function() {
                 scope.val1 = 999;
@@ -217,7 +196,7 @@ describe('angularValidator', function() {
 
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
-            element = $compile('<form name="form"><input type="number" name="input" ng-model="val1" iv-card></form>')(scope);
+            element = $compile('<form name="form"><input type="text" name="input" ng-model="val1" iv-card></form>')(scope);
             scope.$digest();
         }));
 
