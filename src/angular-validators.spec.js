@@ -101,6 +101,13 @@ describe('angularValidators', function() {
             expect(scope.form.input.$valid).toBe(false);
         });
 
+        it('should not populate $pending if no value passed', function() {
+            scope.$apply(function() {
+                scope.minAge = 21;
+            });
+            expect(scope.form.$pending).toBe(undefined);
+        });
+
     });
 
     describe('ivMin', function() {

@@ -37,7 +37,7 @@
                 ngModel.$validators.tooYoung = function (value)
                 {
                     if (!value) {
-                        return;
+                        return false;
                     }
                     var date = new Date(value);
                     return getAge(date) >= scope.$eval(attrs.ivMinAge);
