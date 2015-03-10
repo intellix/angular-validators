@@ -1,10 +1,6 @@
 (function () {
     'use strict';
 
-    function isEmpty(value) {
-        return angular.isUndefined(value) || value === '' || value === null || value !== value;
-    }
-
     angular.module('angularValidators')
 
         .directive('ivMin', function() {
@@ -24,7 +20,7 @@
                     ngModel.$validators.ivMin = function(value)
                     {
                         var min = scope.$eval(attrs.ivMin) || 0;
-                        if (!isEmpty(value) && value < min) {
+                        if (ngModel.$isEmpty(value) || value < min) {
                             return false;
                         } else {
                             return true;
@@ -51,7 +47,7 @@
                     ngModel.$validators.ivMax = function(value)
                     {
                         var max = scope.$eval(attrs.ivMax) || Infinity;
-                        if (!isEmpty(value) && value > max) {
+                        if (ngModel.$isEmpty(value) || value > max) {
                             return false;
                         } else {
                             return true;
