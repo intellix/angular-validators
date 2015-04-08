@@ -83,6 +83,12 @@
             }];
 
             return {
+                getDefaultFormat: function() {
+                    return defaultFormat;
+                },
+                getDefaultInputFormat: function() {
+                    return defaultInputFormat;
+                },
                 fromNumber: function(number) {
                     var returnedCard;
                     angular.forEach(cards, function(card) {
