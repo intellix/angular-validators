@@ -17,7 +17,7 @@
                         ngModel.$validate();
                     });
 
-                    ngModel.$validators.equals = function(value)
+                    ngModel.$validators.ivEquals = function(value)
                     {
                         return value === attrs.ivEquals;
                     };
@@ -39,7 +39,7 @@
                         ngModel.$validate();
                     });
 
-                    ngModel.$validators.notEquals = function(value)
+                    ngModel.$validators.ivNotEquals = function(value)
                     {
                         return value !== attrs.ivNotEquals;
                     };
